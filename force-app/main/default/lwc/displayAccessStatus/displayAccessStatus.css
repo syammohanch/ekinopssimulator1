@@ -1,0 +1,77 @@
+.panelSection{
+    background-color: white;
+    height: 50px;
+    border-radius: 5px;
+}
+.status_block{
+    background-color: #f4f4f4;
+    padding: 3px 7px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+.status_class_New{
+    background-color: #FFA0A0;
+}
+.status_class_Assigned{
+    background-color: #FFA0A0;
+}
+.status_class_Confirmed{
+    background-color: #FFA0A0;
+}
+.status_class_Feedback{
+    background-color: #FFA0A0;
+}
+.status_class_Resolved{
+    background-color: #FFA0A0;
+}
+.status_class_Delivered{
+    background-color: #CCEEDD;
+}
+.status_class_Closed{
+    background-color: #E8E8E8;
+}
+.status_class_Request_info{
+    background-color: #FF5088;
+}
+.status_class_Test_assigned{
+    background-color: #FFD850;
+    padding: 3px 7px;
+    border-radius: 5px;
+}
+.status_class_Test_approved{
+    background-color: #CCEEDD;
+}
+.status_class_RD_solved{
+    background-color: #FFFFB0;
+}
+.status_class_RD_delivered{
+    background-color: #CCEEDD;
+}
+.status_class_RD_assigned{
+    background-color: #C8C8FF;
+}
+.status_class_Workaround_Provided{
+    background-color: #FFC61E;
+}
+.status_class_Workaround_Accepted{
+    background-color: #50D250;
+}
+
+ul.quickInfoAccessCase{
+    margin-top:16px;
+
+}
+ul.quickInfoAccessCase li {
+    float: left;
+    padding: 0px 20px;
+    border-right: 2px dotted #ccc;
+
+  }
+  ul.quickInfoAccessCase li label{
+    font-weight: 700;
+  }
+   
+  
+  ul.quickInfoAccessCase li:last-child {
+    border: none;
+  }

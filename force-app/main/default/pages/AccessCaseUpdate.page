@@ -1,0 +1,161 @@
+<apex:page standardController="Case" extensions="CaseRedirectEdit" action="{!redirectedit}" lightningStylesheets="true">
+   
+    <style type="text/css">
+        .caseInputMd {width:250px;}
+        .caseInputSm {width:150px;}
+        .caseInputL {width:100%;}
+        .caseInputTextAreaSm{height:30px;}
+    </style><div class="slds-scope">
+    <apex:form >
+        <apex:pageBlock title="Edit Case">
+             <apex:pageBlockSection columns="2">
+                <apex:inputField value="{! Case.Subject}" required="true" styleClass="caseInputL"/>
+             </apex:pageBlockSection>
+            <apex:pageBlockSection columns="2">
+                <apex:inputField value="{! Case.Description}" required="true" styleClass="caseInputL"/> 
+             </apex:pageBlockSection>
+            <apex:pageBlockSection columns="2">
+                <apex:inputField value="{! Case.Detailed_Description__c}" styleClass="caseInputL"/> 
+             </apex:pageBlockSection>
+             <apex:pageBlockSection columns="2" >
+                <apex:inputField value="{! Case.PrivacyPick__c}" styleClass="caseInputMd"/>
+             </apex:pageBlockSection>
+             <apex:pageBlockSection columns="1" >
+                <apex:inputField value="{! Case.IsFeatureRequest__c}"  styleClass="chkFeatureRequest"/>
+             </apex:pageBlockSection>
+             <apex:pageBlockSection columns="2">
+                <apex:inputField value="{! Case.AccountId}" required="true" styleClass="caseInputMd"/>   
+                <apex:inputField value="{! Case.PartnerCustomerRef__c}" styleClass="caseInputMd"/>
+                <apex:inputField value="{! Case.ServiceContractId}" styleClass="caseInputMd"/>   
+                <apex:inputField value="{! Case.EntitlementId}" styleClass="caseInputMd"/>
+                <apex:inputField value="{! Case.ContactId}" styleClass="caseInputMd"/>   
+                <apex:inputField value="{! Case.RelatedCustomers__c}" styleClass="caseInputMd caseInputTextAreaSm"/>
+                <!--<apex:inputField value="{! Case.ContactEmail}" styleClass="caseInputMd"/>   
+                <apex:inputField value="{! Case.ContactPhone}" styleClass="caseInputMd"/>   -->
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="2">
+                <apex:inputField value="{! Case.Type}" required="true" styleClass="caseInputMd" onchange="inputTypeChange(this.value)" /> 
+                <apex:inputField value="{! Case.Pname__c}" required="true" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.Priority}" required="true" styleClass="caseInputMd" onchange="inputPriorityChange(this.value)"/> 
+                <apex:inputField value="{! Case.ReproductibilityPick__c}" styleClass="caseInputMd"/>   
+                <apex:inputField value="{! Case.DetectionPhasePick__c}" required="true" styleClass="caseInputMd" onchange="inputDetectionPhaseChange(this.value)"/>   
+                <apex:inputField value="{! Case.IsServiceAffectingPick__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.SoftwarePackPick__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.SoftwareVersion__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.Internal_Priority__c}"  styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.CustomerTicketRef__c}" styleClass="caseInputMd" /> 
+                <!--<apex:inputField value="{! Case.NewKeywords__c}" styleClass="caseInputMd" /> -->
+                <apex:inputField value="{! Case.RequestedDate__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.EstimatedDate__c}" styleClass="caseInputMd"  /> 
+                <apex:inputField value="{! Case.DeliveryDate__c}" styleClass="caseInputMd" />
+                <apex:inputField value="{! Case.FixSoftwareVersion__c}" styleClass="caseInputMd" />
+                <apex:inputField value="{! Case.RelatedTicketRef__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.EmailNotification__c}" styleClass="caseInputMd" />
+                <apex:outputText />
+                <apex:outputText value="{!emailNotificationErrorMessage}" style="color:#f0485d" rendered="{!LEN(emailNotificationErrorMessage)>0}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="2">
+                 <apex:inputField value="{! Case.Remarks__c}" styleClass="caseInputL"/>
+                 <apex:inputField value="{! Case.To_Do__c}" styleClass="caseInputL"/> 
+                <!--<apex:inputField value="{! Case.Status}" required="true" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.EntitlementId}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.SLAbreachPick__c}" styleClass="caseInputMd"  /> 
+                <apex:inputField value="{! Case.SLAbreachIconAuto__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.GlobalSLABreachPick__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.GlobalSLAbreachIconAuto__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.Origin}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.IsReproduced__c}"/> 
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1">
+                <apex:inputField value="{! Case.RootCauseAnalysis__c}" styleClass="caseInputMd" /> 
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="2">
+                <apex:inputField value="{! Case.IsBusinessEscalation__c}"/> 
+                <apex:inputField value="{! Case.IsFeatureRequestCreated__c}"/> 
+                 
+                
+                 
+                <apex:inputField value="{! Case.IsStopped}"/> 
+                <apex:inputField value="{! Case.StopStartDate}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.CustomerTypePick__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.CaseLegacyID__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.DurationAcknowledge__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.DurationDiagnosis__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.DurationResolution__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.DurationWorkaround__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.IsFRPick__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.IsFRCreatedPick__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.SubmittedSince__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.Title__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.IsSLAtocheckonproduct__c}" /> 
+                <apex:inputField value="{! Case.IsSLAtocheckonfamilyproduct__c}" /> 
+                <apex:inputField value="{! Case.IsFeatureRequestLinked__c}"/> 
+                <apex:inputField value="{! Case.SuppliedEmail}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.CurrencyIsoCode}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.IsFRCreatedPick__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.IsFRCreatedPick__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.IsFRCreatedPick__c}" styleClass="caseInputMd" /> 
+                <apex:inputField value="{! Case.IsFRCreatedPick__c}" styleClass="caseInputMd" />  -->
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="3">
+                <apex:outputPanel ></apex:outputPanel>
+                <apex:outputPanel >
+                    <center>
+                        <apex:commandButton action="{! doCustomValidations }" value="Save"/>
+                        <apex:commandButton action="{! cancel}" value="Cancel"/>
+                    </center>
+                 </apex:outputPanel>
+                <apex:outputPanel ></apex:outputPanel>
+            </apex:pageBlockSection>            
+        </apex:pageBlock>
+    </apex:form>
+    </div>
+     <script type='text/javascript'>
+        document.getElementsByClassName("chkFeatureRequest")[0].parentElement.closest("table").style.display="none";
+        function inputTypeChange(value) {
+            if(value == 'Feature Request'){
+                 document.getElementsByClassName("chkFeatureRequest")[0].checked = true;
+            }else {
+                document.getElementsByClassName("chkFeatureRequest")[0].checked = false;
+            }
+            
+            if(value == 'Configuration Example'){
+                sforce.one.showToast({
+                    "title": "Configuration Example",
+                    "message": "You have selected the type \"Configuration example\". This will make this ticket accessible to all customers. So please do not put in any customer specific sensitive data.",
+                    "type": "warning",
+                    "mode": "sticky"
+                });
+            }
+            else if (value == 'Configuration request'){
+                sforce.one.showToast({
+                    "title": "Configuration Request",
+                    "message": "Please use the \"Configuration request\" category for customer specific setups.",
+                    "type": "info",
+                    "mode": "sticky"
+                });
+            }
+        }
+        function inputPriorityChange(value){
+            if(value == 'Critical'){
+               sforce.one.showToast({
+                    "title": "Critical Priority",
+                    "message": "1 - Critical means that the product behaviour has a severe malfunction during commercial service roll-out resulting in a partial or complete outage (loss of service), prohibiting service delivery to the end-customer and having immediate business impact. Priority 1 tickets can only occur, once the units are in commercial roll-out (not in the test-lab)",
+                    "type": "info",
+                    "mode": "sticky"
+                }); 
+            }
+        }
+        function inputDetectionPhaseChange(value) {
+            if(value == 'Customer Live Network'){
+                sforce.one.showToast({
+                    "title": 'Customer Live Network Detection Phase',
+                    "message": 'CAUTION:Customer Live Network is applicable to real end-customer installations with official contracts to the ISP/supplier.\n Test environments using the production/live network should be logged using "Detection Phase = Customer Lab". It is expected that the related feature has been validated in advance in a lab-environment before it was used in the field/production network.',
+                    "type": 'warning',
+                    "mode": 'sticky'
+                });
+            }
+        } 
+    </script>
+</apex:page>

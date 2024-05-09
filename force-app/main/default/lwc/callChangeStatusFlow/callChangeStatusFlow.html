@@ -1,0 +1,23 @@
+<template>
+        <lightning-modal-header label="Update Status"></lightning-modal-header>
+        <lightning-modal-body> 
+            <!--Record Id: {recordId} 
+            UserProfile: {userProfileName}
+            Current Status: {currentStatus}
+            Current Subject: {currentSubject}-->
+            <div class="row"><strong>Current Status: {currentStatus}</strong></div>
+            <div class="row lightning-combo-access-status">
+                <lightning-combobox class="statusCls validatestatus" name="status" label="Status" value="" placeholder="Select Status" options={TypeOptions}  onchange={handleStatusChange} ></lightning-combobox>
+            </div>
+            <div class="row"  style="padding-top: 15px;">
+                <lightning-input-rich-text name="comments" class="commentCls validatecomments" abel-visible label="Comments" placeholder="Add comments here..."  onchange={handleCommentChange} disabled-categories="FORMAT_FONT,ALIGN_TEXT,INDENT"></lightning-input-rich-text>
+                <p class="elementHoldingHTMLContent" style="color:#ba0517;" lwc:dom="manual"></p>
+            </div>
+            <div class="row" style="padding-top: 15px;">
+                <lightning-button label="Save" onclick={handleSave} class="slds-align_absolute-center" disabled={disabled}></lightning-button>
+            </div>
+        </lightning-modal-body>
+        <lightning-modal-footer>
+            <!--<lightning-button label="OK" ></lightning-button>-->
+        </lightning-modal-footer>
+</template>

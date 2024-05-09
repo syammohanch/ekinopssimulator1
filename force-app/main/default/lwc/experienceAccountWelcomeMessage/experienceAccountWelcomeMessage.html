@@ -1,0 +1,19 @@
+<template>
+    <span lwc:if={error} class="slds-text-color_error">
+        {error}
+    </span>
+    <lightning-record-view-form
+        lwc:elseif={accountId}
+        record-id={accountId}
+        object-api-name="Account"
+    >
+        <lightning-output-field
+            field-class={fieldClass}
+            field-name="Welcome__c"
+            variant="label-hidden"
+        ></lightning-output-field>
+    </lightning-record-view-form>
+    <div lwc:else class="slds-is-relative" style="height: 50px;">
+        <lightning-spinner size="small"></lightning-spinner>
+    </div>
+</template>

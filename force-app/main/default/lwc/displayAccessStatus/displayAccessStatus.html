@@ -1,0 +1,21 @@
+<template>
+    <!--<div class="demo-only demo-only--sizing slds-grid slds-wrap panelSection">
+        <div class="slds-size_1-of-3">Case Number: {caseNumber}</div>
+        <div class="slds-size_2-of-3">
+            <div class="slds-box_x-small slds-text-align_left slds-m-around_x-small">
+              <span class="statusBlock">Case Number: {caseNumber} | Status: <span class={classname}>{status}</span> | Priority: {casePriority}</span>
+            </div>
+        </div>
+        <div class="slds-size_3-of-3">Priority: {casePriority}</div>
+    </div>-->
+    <div class="demo-only demo-only--sizing slds-grid slds-wrap panelSection">
+        <ul class="quickInfoAccessCase">
+            <li><label> Number: </label>{caseNumber}</li>
+            <li><label> Status: </label><span class={classname}>{status}</span></li>
+            <li><label> Priority: </label>{casePriority}</li>
+            <li><label> SLA Type: </label>{slaType}</li>
+            <li><label> Global SLA Breach: </label>{globalSLABreach}</li>
+            <li><label> SLA Breach: </label>{slaBreach}</li>
+        </ul>
+    </div>
+</template>
